@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 
 
+Route::get('libros/pdf_online', [App\Http\Controllers\LibroController::class, 'pdf_online'])->name('libros.pdf');
+Route::get('libros/pdf_download', [App\Http\Controllers\LibroController::class, 'pdf_download'])->name('libros.pdf');
 
 
 Auth::routes();

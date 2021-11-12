@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Libro;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use PDF;
 
 /**
  * Class LibroController
@@ -24,6 +25,21 @@ class LibroController extends Controller
         return view('libro.index', compact('libros'))
             ->with('i', (request()->input('page', 1) - 1) * $libros->perPage());
     }
+
+
+    public function pdf_online(){
+        $libros = Libro::paginate();
+        $pdf = PDF::loadView('libro.pdf',['libros'=>$libros]);
+        return $pdf->stream();
+   }
+
+    public function pdf_dowload(){
+         $libros = Libro::paginate();
+         $pdf = PDF::loadView('libro.pdf',['libros'=>$libros]);
+         return $pdf->download('____libro.pdf');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

@@ -21,6 +21,21 @@
                                   {{ __('Create New') }}
                                 </a>
                               </div>
+                              <span></span>
+
+                              <span></span>
+                              <div class="float-right">
+                                <a href="{{ route('libros.pdf_download') }}" class="btn btn-primary btn-sm float"  data-placement="left">
+                                  {{ __('Descarga') }}
+                                </a>
+                              </div>
+                              <span></span>
+                              <div class="float-right">
+                                <a href="{{ route('libros.pdf_online') }}" class="btn btn-primary btn-sm float"  data-placement="left">
+                                  {{ __('Ver en linea') }}
+                                </a>
+                              </div>
+
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -35,7 +50,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Categoria </th>
 										<th>Nombre</th>
 
@@ -46,7 +61,7 @@
                                     @foreach ($libros as $libro)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $libro->categoria->Nombre }}</td>
 											<td>{{ $libro->nombre }}</td>
 
